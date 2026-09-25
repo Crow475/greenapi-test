@@ -1,4 +1,4 @@
-export default function ButtonPrimary({
+export default function ButtonSecondary({
     children,
     className,
     ...props

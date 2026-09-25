@@ -7,7 +7,7 @@ export default function NewChatDialog() {
     return (
         <AlertDialog.Portal>
             <AlertDialog.Overlay className="fixed inset-0 bg-black/20 backdrop-blur-sm" />
-            <AlertDialog.Content className="fixed top-1/4 left-1/3 h-1/2 w-1/3 flex-col items-center justify-center rounded-lg bg-white p-4">
+            <AlertDialog.Content className="fixed top-1/4 left-1/3 h-1/2 w-1/3 flex-col items-center justify-center rounded-2xl bg-white p-4">
                 <AlertDialog.Title className="flex w-full flex-row items-center justify-center p-2">
                     <span className="text-2xl font-bold text-black">
                         Start New Chat
