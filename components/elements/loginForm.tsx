@@ -1,4 +1,5 @@
 import LoginInput from "@/components/atoms/loginInput";
+import ButtonPrimary from "@/components/atoms/btnPrimary";
 
 export default function LoginForm() {
     return (
@@ -14,12 +15,7 @@ export default function LoginForm() {
                         label="apiTokenInstance"
                     />
                 </div>
-                <button
-                    type="submit"
-                    className="rounded-lg bg-black px-4 py-2 font-bold text-white hover:bg-neutral-800"
-                >
-                    Submit
-                </button>
+                <ButtonPrimary type="submit">Submit</ButtonPrimary>
             </form>
         </div>
     );
