@@ -25,7 +25,7 @@ export default function NewChatDialog() {
                             <input
                                 type="text"
                                 className="w-2/3 rounded-lg border border-neutral-400 px-2 py-1 text-black"
-                                placeholder="1234567890"
+                                placeholder="012345678910"
                             />
                         </label>
                     </div>

@@ -1,14 +1,12 @@
 import { ScrollArea } from "radix-ui";
 
+import { useChats } from "@/lib/chatsContext";
+
 import ChatButton from "@/components/atoms/chatButton";
 
-export default function ChatList({
-    currentChat,
-    setCurrentChat,
-}: {
-    currentChat: string | null;
-    setCurrentChat: (chatId: string) => void;
-}) {
+export default function ChatList() {
+    const { currentChat } = useChats();
+
     return (
         <ScrollArea.Root className="flex h-full w-full flex-col items-center justify-start overflow-hidden rounded-2xl border border-neutral-200">
             <ScrollArea.Viewport className="flex h-full w-full flex-col items-center justify-start">
@@ -16,19 +14,16 @@ export default function ChatList({
                     <ChatButton
                         chatId="chat1"
                         chatName="Chat 1"
-                        setCurrentChat={setCurrentChat}
                         currentChat={currentChat}
                     />
                     <ChatButton
                         chatId="chat2"
                         chatName="Chat 2"
-                        setCurrentChat={setCurrentChat}
                         currentChat={currentChat}
                     />
                     <ChatButton
                         chatId="chat3"
                         chatName="Chat 3"
-                        setCurrentChat={setCurrentChat}
                         currentChat={currentChat}
                     />
                 </ul>
