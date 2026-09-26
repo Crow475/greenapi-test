@@ -6,6 +6,8 @@ import { AlertDialog } from "radix-ui";
 
 import { LuPlus, LuSend } from "react-icons/lu";
 
+import { logout } from "@/functions/logout";
+
 import NewChatDialog from "@/components/elements/newChatDialog";
 import ChatList from "@/components/elements/chatList";
 
@@ -50,7 +52,10 @@ export default function Chat() {
                         </h2>
                     </div>
                     <div className="flex w-1/12 flex-row items-center justify-center">
-                        <button className="cursor-pointer rounded-2xl bg-white p-3 text-white shadow-lg hover:bg-neutral-200">
+                        <button
+                            className="cursor-pointer rounded-2xl bg-white p-3 text-white shadow-lg hover:bg-neutral-200"
+                            onClick={() => logout()}
+                        >
                             <span className="font-bold text-black">
                                 Log out
                             </span>

@@ -17,6 +17,7 @@ export default function LoginInput({
             </div>
             <input
                 id={id}
+                name={id}
                 type="text"
                 className="w-[60%] rounded-lg border border-neutral-400 px-2 py-1 text-black"
                 required
