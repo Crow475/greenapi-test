@@ -23,11 +23,11 @@ export default function NewChatDialog({
     const { setAllChats, allChats } = useChats();
 
     useEffect(() => {
-        if (
-            state &&
-            state.chatId &&
-            !allChats.some((chat) => chat.chatId === state.chatId)
-        ) {
+        if (state && state.chatId) {
+            if (allChats.some((chat) => chat.chatId === state.chatId)) {
+                setIsDialogOpen(false);
+                return;
+            }
             setAllChats([...allChats, state as ChatType]);
             setIsDialogOpen(false);
         }

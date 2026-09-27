@@ -5,6 +5,7 @@ import ChatHeader from "@/components/elements/chatHeader";
 import NewChatButton from "@/components/elements/newChatButton";
 import LogOutButton from "@/components/elements/logOutButton";
 import ChatList from "@/components/elements/chatList";
+import ChatListPlaceholder from "@/components/elements/chatListPlaceholder";
 
 export default async function ChatLayout({ children }: LayoutProps<"/chat">) {
     const cookieStore = await cookies();
@@ -26,7 +27,11 @@ export default async function ChatLayout({ children }: LayoutProps<"/chat">) {
                             <NewChatButton />
                         </div>
                     </div>
-                    <ChatList savedChats={allChats} />
+                    {allChats.length > 0 ? (
+                        <ChatList savedChats={allChats} />
+                    ) : (
+                        <ChatListPlaceholder />
+                    )}
                 </div>
                 <div className="relative flex h-full w-3/4 flex-col items-center justify-center pl-4">
                     <div className="absolute top-0 flex w-full flex-row items-center justify-around">
