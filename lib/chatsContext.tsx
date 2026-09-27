@@ -2,11 +2,17 @@
 
 import { createContext, useContext, useState } from "react";
 
+type ChatType = {
+    chatId: string;
+    username: string;
+    phoneNumber: number;
+};
+
 const ChatsContext = createContext<{
     currentChat: string | null;
     setCurrentChat: (chatId: string) => void;
-    allChats: string[];
-    setAllChats: (chats: string[]) => void;
+    allChats: ChatType[];
+    setAllChats: (chats: ChatType[]) => void;
 }>({
     currentChat: null,
     setCurrentChat: () => {},
@@ -16,7 +22,7 @@ const ChatsContext = createContext<{
 
 function ChatsContextProvider({ children }: { children: React.ReactNode }) {
     const [currentChat, setCurrentChat] = useState<string | null>(null);
-    const [allChats, setAllChats] = useState<string[]>([]);
+    const [allChats, setAllChats] = useState<ChatType[]>([]);
 
     return (
         <ChatsContext.Provider
@@ -35,4 +41,4 @@ function useChats() {
     return context;
 }
 
-export { ChatsContextProvider, useChats };
+export { ChatsContextProvider, useChats, type ChatType };

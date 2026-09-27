@@ -8,6 +8,7 @@ export async function login(idInstance: string, apiTokenInstance: string) {
 
     cookieStore.set("idInstance", idInstance);
     cookieStore.set("apiTokenInstance", apiTokenInstance);
+    cookieStore.set("allChats", JSON.stringify([]));
 
     redirect("/chat");
 }

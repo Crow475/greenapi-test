@@ -8,6 +8,7 @@ export async function logout() {
 
     cookieStore.delete("idInstance");
     cookieStore.delete("apiTokenInstance");
+    cookieStore.delete("allChats");
 
     redirect("/");
 }
