@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Green-API test
 
-## Getting Started
+Тестовое задание для позиции Фронтенд разработчик React в Green API.
+Простой интерфейс чата. Использует Green API для отправки сообщений в Telegram.
 
-First, run the development server:
+## Используемые технологии
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- React
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Radix UI
+- Green API
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Запуск на локальной машине
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Склонировать репозиторий
+2. Установить зависимости:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    ```bash
+    npm install
+    ```
 
-## Learn More
+3. Создать файл `.env` и добавить в него переменную окружения:
 
-To learn more about Next.js, take a look at the following resources:
+    ```env
+    NEXT_PUBLIC_API_URI=*значение из дэшборда Green API*
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Собрать проект:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ```bash
+    npm run build
+    ```
 
-## Deploy on Vercel
+5. Запустить проект:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    npm run start
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+6. Открыть в браузере: [http://localhost:3000](http://localhost:3000)
+
+## Лайв версия
+
+Проект хостится на Netlify: [https://greenapi-test-task-av.netlify.app/](https://greenapi-test-task-av.netlify.app/)
