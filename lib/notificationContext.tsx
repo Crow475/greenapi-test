@@ -90,6 +90,15 @@ function NotificationController({
     const { notification, setLocalNotificationStore } = useNotification();
 
     useEffect(() => {
+        const savedNotifications = localStorage.getItem(
+            "localNotificationStore",
+        );
+        if (savedNotifications) {
+            setLocalNotificationStore(JSON.parse(savedNotifications));
+        }
+    }, [setLocalNotificationStore]);
+
+    useEffect(() => {
         const UnInterestingNotifications = [
             "stateInstanceChanged",
             "quotaExceeded",
@@ -104,8 +113,6 @@ function NotificationController({
             ) {
                 // Delete notification if it is not relevant to the app
                 deleteNotification({
-                    apiTokenInstance,
-                    idInstance,
                     receiptId: notification.receiptId,
                 }).catch((error) => {
                     console.error("Error deleting notification:", error);
@@ -120,8 +127,6 @@ function NotificationController({
 
                 // Delete notification from the queue
                 deleteNotification({
-                    apiTokenInstance,
-                    idInstance,
                     receiptId: notification.receiptId,
                 }).catch((error) => {
                     console.error("Error deleting notification:", error);
@@ -139,6 +144,27 @@ function NotificationController({
                 ) {
                     const data: TextMessageContent = messageNotification.body
                         .messageData as TextMessageContent;
+
+                    const storedNotifications = JSON.parse(
+                        localStorage.getItem("localNotificationStore") || "[]",
+                    ) as LocalNotification[];
+                    localStorage.setItem(
+                        "localNotificationStore",
+                        JSON.stringify([
+                            ...storedNotifications,
+                            {
+                                receiptId: messageNotification.receiptId,
+                                typeWebhook:
+                                    messageNotification.body.typeWebhook,
+                                chatId: chatId,
+                                idMessage: messageNotification.body.idMessage,
+                                timestamp: messageNotification.body.timestamp,
+                                typeLocal: "incoming",
+                                messageContent:
+                                    data.textMessageData.textMessage,
+                            },
+                        ]),
+                    );
 
                     setLocalNotificationStore((prevStore) => [
                         ...prevStore,
@@ -168,8 +194,6 @@ function NotificationController({
 
                 // Delete notification from the queue
                 deleteNotification({
-                    apiTokenInstance,
-                    idInstance,
                     receiptId: notification.receiptId,
                 }).catch((error) => {
                     console.error("Error deleting notification:", error);
@@ -186,6 +210,31 @@ function NotificationController({
                 ) {
                     const data: TextMessageContent = messageReceivedNotification
                         .body.messageData as TextMessageContent;
+
+                    const storedNotifications = JSON.parse(
+                        localStorage.getItem("localNotificationStore") || "[]",
+                    ) as LocalNotification[];
+                    localStorage.setItem(
+                        "localNotificationStore",
+                        JSON.stringify([
+                            ...storedNotifications,
+                            {
+                                receiptId:
+                                    messageReceivedNotification.receiptId,
+                                typeWebhook:
+                                    messageReceivedNotification.body
+                                        .typeWebhook,
+                                chatId: chatId,
+                                idMessage:
+                                    messageReceivedNotification.body.idMessage,
+                                timestamp:
+                                    messageReceivedNotification.body.timestamp,
+                                typeLocal: "outgoing",
+                                messageContent:
+                                    data.textMessageData.textMessage,
+                            },
+                        ]),
+                    );
 
                     setLocalNotificationStore((prevStore) => [
                         ...prevStore,

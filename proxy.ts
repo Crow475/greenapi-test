@@ -7,6 +7,10 @@ export async function proxy(request: NextRequest) {
     const idInstance = cookieStore.get("idInstance");
     const apiTokenInstance = cookieStore.get("apiTokenInstance");
 
+    if (request.headers.has("next-action")) {
+        return NextResponse.next();
+    }
+
     if (!idInstance || !apiTokenInstance) {
         return NextResponse.redirect(new URL("/", request.url));
     }

@@ -32,7 +32,11 @@ export default async function sendMessage(
         },
     );
 
+    console.log("Send message response:", response);
+
     const data = await response.json();
+
+    console.log("Send message response data:", data);
 
     if (response.ok) {
         return {
