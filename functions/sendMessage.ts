@@ -25,7 +25,7 @@ export default async function sendMessage(
     });
 
     const response = await fetch(
-        `${process.env.API_URI}/waInstance${idInstance}/sendMessage/${apiTokenInstance}`,
+        `${process.env.NEXT_PUBLIC_API_URI}/waInstance${idInstance}/sendMessage/${apiTokenInstance}`,
         {
             method: "POST",
             body: requestBody,

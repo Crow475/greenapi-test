@@ -12,7 +12,7 @@ export async function proxy(request: NextRequest) {
     }
 
     const instanceStatusResponse = await fetch(
-        `${process.env.API_URI}/waInstance${idInstance.value}/getStateInstance/${apiTokenInstance.value}`,
+        `${process.env.NEXT_PUBLIC_API_URI}/waInstance${idInstance.value}/getStateInstance/${apiTokenInstance.value}`,
     );
     console.log("Checked in proxy function");
     console.log(request.url);

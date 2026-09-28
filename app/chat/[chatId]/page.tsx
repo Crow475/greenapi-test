@@ -8,6 +8,8 @@ import { LuLoaderCircle } from "react-icons/lu";
 import { useChats } from "@/lib/chatsContext";
 import sendMessage from "@/functions/sendMessage";
 
+import { useNotification } from "@/lib/notificationContext";
+
 export default function Chat({
     params,
 }: {
@@ -15,6 +17,11 @@ export default function Chat({
 }) {
     const { chatId } = use(params);
     const { setCurrentChat } = useChats();
+
+    const { localNotificationStore, notification } = useNotification();
+    const messages = localNotificationStore.filter(
+        (notification) => notification.chatId === chatId,
+    );
 
     const [state, submitAction, isPending] = useActionState(sendMessage, {
         chatId: chatId,
@@ -29,7 +36,18 @@ export default function Chat({
     return (
         <>
             <div className="flex h-full w-full flex-col items-center justify-center pt-12 pb-10">
-                <div className="flex h-full w-full flex-col items-center justify-start"></div>
+                <div className="flex h-full w-full flex-col items-center justify-start">
+                    {notification && (
+                        <span className="text-black">
+                            {JSON.stringify(notification)}
+                        </span>
+                    )}
+                    {messages.length > 0 && (
+                        <span className="text-black">
+                            {JSON.stringify(messages)}
+                        </span>
+                    )}
+                </div>
             </div>
             <form
                 className="absolute bottom-0 flex w-full flex-row items-center justify-around"

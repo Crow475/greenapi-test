@@ -35,7 +35,7 @@ export async function getNewChat(
     });
 
     const response = await fetch(
-        `${process.env.API_URI}/waInstance${idInstance}/checkAccount/${apiTokenInstance}`,
+        `${process.env.NEXT_PUBLIC_API_URI}/waInstance${idInstance}/checkAccount/${apiTokenInstance}`,
         {
             method: "POST",
             body: requestBody,
