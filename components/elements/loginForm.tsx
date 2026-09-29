@@ -36,6 +36,7 @@ export default function LoginForm() {
                     <LoginInput
                         id="apiTokenInstance"
                         label="apiTokenInstance"
+                        type="password"
                     />
                 </div>
                 <ButtonPrimary type="submit">Submit</ButtonPrimary>

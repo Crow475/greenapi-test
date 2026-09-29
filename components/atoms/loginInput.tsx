@@ -1,9 +1,11 @@
 export default function LoginInput({
     id,
     label,
+    type,
 }: {
     id: string;
     label: string;
+    type?: React.HTMLInputTypeAttribute | undefined;
 }) {
     return (
         <label
@@ -18,7 +20,7 @@ export default function LoginInput({
             <input
                 id={id}
                 name={id}
-                type="text"
+                type={type ? type : "text"}
                 className="w-[60%] rounded-lg border border-neutral-400 px-2 py-1 text-black"
                 required
             />
